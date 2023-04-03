@@ -1,4 +1,4 @@
-# Scaffold-Eth 2
+# Proof of Participation
 
 ⚠️ This project is currently under active development. Things might break. Feel free to check the open issues & create new ones.
 
