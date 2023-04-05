@@ -7,11 +7,12 @@ import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
 export const ContractInteraction = () => {
   const [toAddress, setToAddress] = useState("");
+  const [url, setURL] = useState("");
 
   const { writeAsync, isLoading } = useScaffoldContractWrite({
     contractName: "ProofParticipation",
     functionName: "sendProofOfParticipation",
-    args: [toAddress],
+    args: [toAddress, url],
   });
 
   return (
@@ -24,12 +25,20 @@ export const ContractInteraction = () => {
           <span className="text-4xl sm:text-6xl text-black">Issue Proof of Participation</span>
 
           <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-5">
-            <input
-              type="text"
-              placeholder="Enter address to send"
-              className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
-              onChange={e => setToAddress(e.target.value)}
-            />
+            <div>
+              <input
+                type="text"
+                placeholder="Enter address to send"
+                className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase mb-2"
+                onChange={e => setToAddress(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Enter URL for NFT"
+                className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
+                onChange={e => setURL(e.target.value)}
+              />
+            </div>
             <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
               <div className="flex rounded-full border-2 border-primary p-1">
                 <button
