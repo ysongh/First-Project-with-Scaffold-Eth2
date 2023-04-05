@@ -15,7 +15,7 @@ export const ContractData = () => {
       {proofNFTs?.map((p, i) => (
         <div key={i} className="bg-secondary border border-primary rounded-xl flex mb-2">
           <div className="text-4xl text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
-            <p>NFT #{p.toString()}</p>
+            <img className="w-80" src={p} alt="Participation" />
           </div>
         </div>
       ))}

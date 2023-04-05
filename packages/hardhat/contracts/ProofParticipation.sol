@@ -20,7 +20,14 @@ contract ProofParticipation is ERC721URIStorage{
     totalParticipation++;
   }
 
-  function getProofOfParticipation(address to) external view returns (uint256[] memory) {
-    return proofs[to];
+  function getProofOfParticipation(address to) external view returns (string[] memory) {
+    string[] memory urls = new string[](proofs[to].length);
+
+    for(uint i = 0; i < proofs[to].length; i++) {
+      string memory url = tokenURI(i);
+      urls[i] = url;
+    }
+
+    return urls;
   }
 }
