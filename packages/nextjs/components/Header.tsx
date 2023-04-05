@@ -51,6 +51,12 @@ export const Header = () => {
           Issue NFT
         </NavLink>
       </li>
+      <li>
+        <NavLink href="/my-nft">
+          <SparklesIcon className="h-4 w-4" />
+          My NFT
+        </NavLink>
+      </li>
     </>
   );
 
