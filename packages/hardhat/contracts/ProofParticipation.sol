@@ -5,18 +5,21 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 contract ProofParticipation is ERC721URIStorage{
   uint256 public totalParticipation = 0;
+  string public collectionURL;
 
   mapping(address => uint256[]) public proofs;
 
-  event ProofOfParticipationCreated(address to, string cid, uint date);
+  event ProofOfParticipationCreated(address to, string url, uint date);
 
-  constructor() ERC721("Proof of Participation", "POP") {}
+  constructor(string memory url) ERC721("Proof of Participation", "POP") {
+    collectionURL = url;
+  }
 
-  function sendProofOfParticipation(address to, string calldata url) external {
+  function sendProofOfParticipation(address to) external {
     _mint(to, totalParticipation);
-    _setTokenURI(totalParticipation, url);
+    _setTokenURI(totalParticipation, collectionURL);
     proofs[to].push(totalParticipation);
-    emit ProofOfParticipationCreated(to, url, block.timestamp);
+    emit ProofOfParticipationCreated(to, collectionURL, block.timestamp);
     totalParticipation++;
   }
 

@@ -8,8 +8,8 @@ contract ParticipationFactory {
 
   constructor() {}
 
-  function createCollection() external returns (address) {
-    ProofParticipation newCollection = new ProofParticipation();
+  function createCollection(string calldata url) external returns (address) {
+    ProofParticipation newCollection = new ProofParticipation(url);
     addressToCollection[msg.sender].push(address(newCollection));
     return address(newCollection);
   }
@@ -18,9 +18,9 @@ contract ParticipationFactory {
     return addressToCollection[to];
   }
 
-  function sendProofOfParticipation(address collectionAddress, address to, string calldata url) external {
+  function sendProofOfParticipation(address collectionAddress, address to) external {
     ProofParticipation collection = ProofParticipation(collectionAddress);
-    collection.sendProofOfParticipation(to, url);
+    collection.sendProofOfParticipation(to);
   }
 
   function getProofOfParticipation(address collectionAddress, address to) external view returns (string[] memory) {
