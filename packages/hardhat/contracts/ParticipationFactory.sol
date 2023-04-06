@@ -5,6 +5,7 @@ import "./ProofParticipation.sol";
 
 contract ParticipationFactory {
   mapping(address => address[]) public addressToCollection;
+  mapping(address => string[]) public userParticipationURLs;
 
   constructor() {}
 
@@ -20,11 +21,11 @@ contract ParticipationFactory {
 
   function sendProofOfParticipation(address collectionAddress, address to) external {
     ProofParticipation collection = ProofParticipation(collectionAddress);
-    collection.sendProofOfParticipation(to);
+    string memory newURL = collection.sendProofOfParticipation(to);
+    userParticipationURLs[to].push(newURL);
   }
 
-  function getProofOfParticipation(address collectionAddress, address to) external view returns (string[] memory) {
-    ProofParticipation collection = ProofParticipation(collectionAddress);
-    return collection.getProofOfParticipation(to);
+  function getProofOfParticipation(address to) external view returns (string[] memory) {
+    return userParticipationURLs[to];
   }
 }

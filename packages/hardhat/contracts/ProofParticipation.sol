@@ -15,22 +15,13 @@ contract ProofParticipation is ERC721URIStorage{
     collectionURL = url;
   }
 
-  function sendProofOfParticipation(address to) external {
+  function sendProofOfParticipation(address to) external returns (string memory) {
     _mint(to, totalParticipation);
     _setTokenURI(totalParticipation, collectionURL);
     proofs[to].push(totalParticipation);
     emit ProofOfParticipationCreated(to, collectionURL, block.timestamp);
     totalParticipation++;
-  }
-
-  function getProofOfParticipation(address to) external view returns (string[] memory) {
-    string[] memory urls = new string[](proofs[to].length);
-
-    for(uint i = 0; i < proofs[to].length; i++) {
-      string memory url = tokenURI(i);
-      urls[i] = url;
-    }
-
-    return urls;
+    
+    return collectionURL;
   }
 }
