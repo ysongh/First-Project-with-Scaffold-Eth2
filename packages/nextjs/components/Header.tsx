@@ -46,6 +46,12 @@ export const Header = () => {
         </NavLink>
       </li>
       <li>
+        <NavLink href="/create-collection">
+          <SparklesIcon className="h-4 w-4" />
+          Collection
+        </NavLink>
+      </li>
+      <li>
         <NavLink href="/issue-nft">
           <SparklesIcon className="h-4 w-4" />
           Issue NFT

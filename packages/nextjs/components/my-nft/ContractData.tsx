@@ -5,7 +5,7 @@ export const ContractData = () => {
   const { address } = useAccount();
 
   const { data: proofNFTs } = useScaffoldContractRead({
-    contractName: "ProofParticipation",
+    contractName: "ParticipationFactory",
     functionName: "getProofOfParticipation",
     args: [address],
   });
