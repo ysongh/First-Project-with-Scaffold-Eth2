@@ -15,12 +15,11 @@ export const ContractData = () => {
       className="flex flex-col justify-center items-center bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] py-10 px-5 sm:px-0 lg:py-auto max-w-[100vw]"
       style={{ minHeight: "80vh" }}
     >
-      <div className="grid lg:grid-cols-3 gap-4 flex-grow">
+      <div className="grid lg:grid-cols-3 gap-4">
         {proofNFTs?.map((p, i) => (
-          <div key={i} className="bg-secondary border border-primary rounded-xl flex">
-            <div className="text-4xl text-right min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
-              <img className="w-80" src={p} alt="Participation" />
-            </div>
+          <div key={i} className="bg-secondary border border-primary rounded-xl">
+            <img className="w-80" src={p.url} alt="Participation" />
+            <p className="text-3xl">{p.name}</p>
           </div>
         ))}
       </div>

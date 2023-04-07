@@ -4,11 +4,13 @@ import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
 export const ContractInteraction = () => {
   const [url, setURL] = useState("");
+  const [name, setName] = useState("");
+  const [symbol, setSymbol] = useState("");
 
   const { writeAsync, isLoading } = useScaffoldContractWrite({
     contractName: "ParticipationFactory",
     functionName: "createCollection",
-    args: [url],
+    args: [url, name, symbol],
   });
 
   return (
@@ -21,9 +23,21 @@ export const ContractInteraction = () => {
             <div>
               <input
                 type="text"
-                placeholder="Enter URL for NFT"
+                placeholder="Enter URL for Collection"
                 className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
                 onChange={e => setURL(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Enter Name for Collection"
+                className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
+                onChange={e => setName(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Enter Symbol for Collection"
+                className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
+                onChange={e => setSymbol(e.target.value)}
               />
             </div>
             <div className="flex rounded-full border border-primary p-1 flex-shrink-0">
