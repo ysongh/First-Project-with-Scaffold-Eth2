@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { CopyIcon } from "./assets/CopyIcon";
 import { DiamondIcon } from "./assets/DiamondIcon";
 import { HareIcon } from "./assets/HareIcon";
@@ -6,13 +7,15 @@ import { ArrowSmallRightIcon } from "@heroicons/react/24/outline";
 import { useScaffoldContractWrite } from "~~/hooks/scaffold-eth";
 
 export const ContractInteraction = () => {
+  const router = useRouter();
+  const { contractaddress } = router.query;
+
   const [toAddress, setToAddress] = useState("");
-  const [url, setURL] = useState("");
 
   const { writeAsync, isLoading } = useScaffoldContractWrite({
     contractName: "ParticipationFactory",
     functionName: "sendProofOfParticipation",
-    args: [toAddress, url],
+    args: [contractaddress as string, toAddress],
   });
 
   return (
@@ -31,12 +34,6 @@ export const ContractInteraction = () => {
                 placeholder="Enter address to send"
                 className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase mb-2"
                 onChange={e => setToAddress(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Enter URL for NFT"
-                className="input font-bai-jamjuree w-full px-5 bg-[url('/assets/gradient-bg.png')] bg-[length:100%_100%] border border-primary text-lg sm:text-2xl placeholder-white uppercase"
-                onChange={e => setURL(e.target.value)}
               />
             </div>
             <div className="flex rounded-full border border-primary p-1 flex-shrink-0">

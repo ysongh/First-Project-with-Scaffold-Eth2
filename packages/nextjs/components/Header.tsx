@@ -52,12 +52,6 @@ export const Header = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink href="/issue-nft">
-          <SparklesIcon className="h-4 w-4" />
-          Issue NFT
-        </NavLink>
-      </li>
-      <li>
         <NavLink href="/my-nft">
           <SparklesIcon className="h-4 w-4" />
           My NFT
