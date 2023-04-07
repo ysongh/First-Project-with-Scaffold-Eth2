@@ -5,12 +5,17 @@ import "./ProofParticipation.sol";
 
 contract ParticipationFactory {
   mapping(address => address[]) public addressToCollection;
-  mapping(address => string[]) public userParticipationURLs;
+  mapping(address => ProofOfParticipation[]) public userParticipationURLs;
 
   constructor() {}
 
-  function createCollection(string calldata url) external returns (address) {
-    ProofParticipation newCollection = new ProofParticipation(url);
+  struct ProofOfParticipation {
+    string url;
+    string name;
+  }
+
+  function createCollection(string calldata url, string calldata name, string calldata symbol) external returns (address) {
+    ProofParticipation newCollection = new ProofParticipation(url, name, symbol);
     addressToCollection[msg.sender].push(address(newCollection));
     return address(newCollection);
   }
@@ -21,11 +26,11 @@ contract ParticipationFactory {
 
   function sendProofOfParticipation(address collectionAddress, address to) external {
     ProofParticipation collection = ProofParticipation(collectionAddress);
-    string memory newURL = collection.sendProofOfParticipation(to);
-    userParticipationURLs[to].push(newURL);
+    (string memory newURL, string memory newName) = collection.sendProofOfParticipation(to);
+    userParticipationURLs[to].push(ProofOfParticipation(newURL, newName));
   }
 
-  function getProofOfParticipation(address to) external view returns (string[] memory) {
+  function getProofOfParticipation(address to) external view returns (ProofOfParticipation[] memory) {
     return userParticipationURLs[to];
   }
 }
