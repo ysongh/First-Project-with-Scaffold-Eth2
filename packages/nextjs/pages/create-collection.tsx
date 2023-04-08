@@ -13,7 +13,7 @@ const CreateCollection: NextPage = () => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree&display=swap" rel="stylesheet" />
       </Head>
-      <div className="" data-theme="exampleUi">
+      <div className="grid lg:grid-cols-2" data-theme="exampleUi">
         <ContractInteraction />
         <ContractData />
       </div>

@@ -21,8 +21,11 @@ export const ContractData = () => {
       <div className="">
         {collections?.map((c, i) => (
           <div key={i} className="bg-secondary border border-primary rounded-xl mb-3">
-            <div className="text-xl min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree">
-              <p onClick={() => router.push(`/issue-nft/${c}`)}>{c}</p>
+            <div
+              className="text-xl min-w-[3rem] px-2 py-1 flex justify-end font-bai-jamjuree cursor-pointer"
+              onClick={() => router.push(`/issue-nft/${c}`)}
+            >
+              <p>{c}</p>
             </div>
           </div>
         ))}
