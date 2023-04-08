@@ -1,9 +1,11 @@
 import Head from "next/head";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import type { NextPage } from "next";
-import { BugAntIcon, SparklesIcon } from "@heroicons/react/24/outline";
+import { ViewColumnsIcon, WalletIcon } from "@heroicons/react/24/outline";
 
 const Home: NextPage = () => {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -17,37 +19,31 @@ const Home: NextPage = () => {
             <span className="block text-2xl mb-2">Welcome to</span>
             <span className="block text-4xl font-bold">Proof of Participation</span>
           </h1>
-          <p className="text-center text-lg">
-            Get started by editing{" "}
-            <code className="italic bg-base-300 text-base font-bold">packages/nextjs/pages/index.tsx</code>
-          </p>
-          <p className="text-center text-lg">
-            Edit your smart contract <code className="italic bg-base-300 text-base font-bold">YourContract.sol</code> in{" "}
-            <code className="italic bg-base-300 text-base font-bold">packages/hardhat/contracts</code>
-          </p>
+          <p className="text-center text-lg">Participation as NFTs</p>
+          <p className="text-center text-lg">Show everyone that you participate in events</p>
         </div>
 
         <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
           <div className="flex justify-center items-center gap-12 flex-col sm:flex-row">
             <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
-                  Debug Contract
-                </Link>{" "}
-                tab.
-              </p>
+              <ViewColumnsIcon className="h-8 w-8 fill-secondary" />
+              <p>Create your Collection</p>
+              <button
+                className="btn btn-primary rounded-full capitalize font-normal font-white w-24 flex items-center gap-1 hover:gap-2 transition-all tracking-widest"
+                onClick={() => router.push(`/create-collection`)}
+              >
+                Create
+              </button>
             </div>
             <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <SparklesIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Experiment with{" "}
-                <Link href="/example-ui" passHref className="link">
-                  Example UI
-                </Link>{" "}
-                to build your own UI.
-              </p>
+              <WalletIcon className="h-8 w-8 fill-secondary" />
+              <p>See your Participation NFTs</p>
+              <button
+                className="btn btn-primary rounded-full capitalize font-normal font-white w-24 flex items-center gap-1 hover:gap-2 transition-all tracking-widest"
+                onClick={() => router.push(`/my-nft`)}
+              >
+                View
+              </button>
             </div>
           </div>
         </div>
