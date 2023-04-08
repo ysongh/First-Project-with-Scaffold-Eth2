@@ -15,7 +15,7 @@ contract ParticipationFactory {
   }
 
   function createCollection(string calldata url, string calldata name, string calldata symbol) external returns (address) {
-    ProofParticipation newCollection = new ProofParticipation(url, name, symbol);
+    ProofParticipation newCollection = new ProofParticipation(msg.sender, url, name, symbol);
     addressToCollection[msg.sender].push(address(newCollection));
     return address(newCollection);
   }
@@ -26,7 +26,7 @@ contract ParticipationFactory {
 
   function sendProofOfParticipation(address collectionAddress, address to) external {
     ProofParticipation collection = ProofParticipation(collectionAddress);
-    (string memory newURL, string memory newName) = collection.sendProofOfParticipation(to);
+    (string memory newURL, string memory newName) = collection.sendProofOfParticipation(msg.sender, to);
     userParticipationURLs[to].push(ProofOfParticipation(newURL, newName));
   }
 
