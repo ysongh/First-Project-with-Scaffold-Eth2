@@ -1,4 +1,9 @@
 # Proof of Participation
+Proof of Participation as NFT to show that you participation in an event
+
+- Live Site - https://youtu.be/x3Ia-2HfFhY
+- Demo - https://proof-of-participation.vercel.app/ (Polygon Mumbai Testnet)
+
 
 ⚠️ This project is currently under active development. Things might break. Feel free to check the open issues & create new ones.
 
