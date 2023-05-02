@@ -12,6 +12,7 @@ contract ParticipationFactory {
   struct ProofOfParticipation {
     string url;
     string name;
+    uint date;
   }
 
   function createCollection(string calldata url, string calldata name, string calldata symbol) external returns (address) {
@@ -26,8 +27,8 @@ contract ParticipationFactory {
 
   function sendProofOfParticipation(address collectionAddress, address to) external {
     ProofParticipation collection = ProofParticipation(collectionAddress);
-    (string memory newURL, string memory newName) = collection.sendProofOfParticipation(msg.sender, to);
-    userParticipationURLs[to].push(ProofOfParticipation(newURL, newName));
+    (string memory newURL, string memory newName, uint date) = collection.sendProofOfParticipation(msg.sender, to);
+    userParticipationURLs[to].push(ProofOfParticipation(newURL, newName, date));
   }
 
   function getProofOfParticipation(address to) external view returns (ProofOfParticipation[] memory) {

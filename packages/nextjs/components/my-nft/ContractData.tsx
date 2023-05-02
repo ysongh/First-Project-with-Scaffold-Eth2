@@ -19,7 +19,9 @@ export const ContractData = () => {
         {proofNFTs?.map((p, i) => (
           <div key={i} className="bg-secondary border border-primary rounded-xl">
             <img className="w-80" src={p.url} alt="Participation" />
-            <p className="text-3xl">{p.name}</p>
+            <p className="text-3xl">
+              {p.name} {p.date.toString()}
+            </p>
           </div>
         ))}
       </div>
